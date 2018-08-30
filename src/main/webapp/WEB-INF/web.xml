@@ -10,7 +10,7 @@
   <!-- Spring容器监听器 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
-    <param-value>classpath:spring/applicationContext-*.xml</param-value>
+    <param-value>classpath:spring/applicationContext*.xml</param-value>
   </context-param>
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -35,10 +35,7 @@
 			如果配置/*，返回jsp也由springmvc解析，这是不对的。 -->
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-  
- 
-  
-  
+
   <!-- post乱码处理 -->
   <filter>
     <filter-name>CharacterEncodingFilter</filter-name>
