@@ -1,15 +1,11 @@
 package com.cskaoyan.controller.device;
 
-import com.cskaoyan.domain.EUDataGridResult;
 import com.cskaoyan.domain.device.Device;
 import com.cskaoyan.service.device.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import sun.security.util.ObjectIdentifier;
 
 import java.util.HashMap;
 import java.util.List;
@@ -23,10 +19,6 @@ public class DeviceListController {
 
     @RequestMapping("/list")
     @ResponseBody
-//    public EUDataGridResult getList(Integer page, Integer rows, Device device) throws Exception{
-//        EUDataGridResult result = deviceService.getList(page, rows, device);
-//        return result;
-//    }
     public List<Device> getList(Device device){
         List<Device> list = deviceService.getList(device);
         return list;
