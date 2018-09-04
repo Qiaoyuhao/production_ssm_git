@@ -1,6 +1,5 @@
 package com.cskaoyan.service.device.impl;
 
-import com.cskaoyan.domain.EUDataGridResult;
 import com.cskaoyan.domain.device.Device;
 import com.cskaoyan.mapper.device.DeviceMapper;
 import com.cskaoyan.service.device.DeviceService;
