@@ -1,6 +1,5 @@
 package com.cskaoyan.service.device;
 
-import com.cskaoyan.domain.EUDataGridResult;
 import com.cskaoyan.domain.device.Device;
 import org.springframework.stereotype.Service;
 
