@@ -20,4 +20,7 @@ public interface DeviceFaultMapper {
     int updateByPrimaryKey(DeviceFault record);
 
     List<DeviceFault> getList(DeviceFault deviceFault);
+
+    int deleteBatch(String[] ids);
+
 }

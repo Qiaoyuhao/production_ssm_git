@@ -8,4 +8,8 @@ import java.util.List;
 @Component
 public interface DeviceCheckService {
     List<DeviceCheck> getList(DeviceCheck deviceCheck);
+
+    boolean addDeviceCheck(DeviceCheck deviceCheck);
+
+    boolean deleteBatch(String[] ids);
 }

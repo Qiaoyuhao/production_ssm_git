@@ -9,4 +9,8 @@ import java.util.List;
 public interface DeviceFaultService {
     List<DeviceFault> getList(DeviceFault deviceFault);
 
+    boolean addDeviceFault(DeviceFault deviceFault);
+
+    boolean deleteBatch(String[] ids);
+
 }

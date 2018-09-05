@@ -24,4 +24,5 @@ public interface DeviceTypeMapper {
 
     List<DeviceType> listType();
 
+    int deleteBatch(String[] ids);
 }

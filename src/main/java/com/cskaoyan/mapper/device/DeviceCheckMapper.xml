@@ -31,7 +31,19 @@
     delete from device_check
     where device_check_id = #{deviceCheckId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.cskaoyan.domain.device.DeviceCheck">
+
+
+
+    <delete id="deleteBatch">
+        delete from device_check
+        where device_check_id IN
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <insert id="insert" parameterType="com.cskaoyan.domain.device.DeviceCheck">
     insert into device_check (device_check_id, device_id, device_check_emp_id, 
       device_check_date, device_check_result, device_check_fault_id
       )

@@ -31,7 +31,18 @@
     delete from device_maintain
     where device_maintain_id = #{deviceMaintainId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.cskaoyan.domain.device.DeviceMaintain">
+
+
+    <delete id="deleteBatch">
+      delete from device_maintain
+      where device_maintain_id IN
+      <foreach collection="array" item="id" open="(" close=")" separator=",">
+        #{id}
+      </foreach>
+    </delete>
+
+
+    <insert id="insert" parameterType="com.cskaoyan.domain.device.DeviceMaintain">
     insert into device_maintain (device_maintain_id, device_fault_id, 
       device_maintain_emp_id, device_maintain_date, 
       device_maintain_result, device_maintain_cost, 

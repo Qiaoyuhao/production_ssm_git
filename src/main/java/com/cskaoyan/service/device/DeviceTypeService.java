@@ -10,4 +10,10 @@ public interface DeviceTypeService {
     List<DeviceType> getList(DeviceType deviceType);
 
     List<DeviceType> find();
+
+    boolean addDeviceType(DeviceType deviceType);
+
+    boolean deleteBatch(String[] ids);
+
+    boolean update(DeviceType deviceType);
 }

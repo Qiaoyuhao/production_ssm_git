@@ -48,7 +48,20 @@
     delete from device_type
     where device_type_id = #{deviceTypeId,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.cskaoyan.domain.device.DeviceType">
+
+
+    <delete id="deleteBatch">
+        DELETE FROM
+          device_type
+        WHERE
+        device_type_id IN
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <insert id="insert" parameterType="com.cskaoyan.domain.device.DeviceType">
     insert into device_type (device_type_id, device_type_name, device_type_model, 
       device_type_spec, device_type_supplier, device_type_producer, 
       device_type_quantity, device_type_warranty

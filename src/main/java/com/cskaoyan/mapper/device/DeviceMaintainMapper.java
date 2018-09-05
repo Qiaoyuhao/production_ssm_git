@@ -21,4 +21,5 @@ public interface DeviceMaintainMapper {
 
     List<DeviceMaintain> getList(DeviceMaintain deviceMaintain);
 
+    int deleteBatch(String[] ids);
 }

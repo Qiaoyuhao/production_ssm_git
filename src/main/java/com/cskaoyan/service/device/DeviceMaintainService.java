@@ -10,4 +10,8 @@ public interface DeviceMaintainService {
 
 
     List<DeviceMaintain> getList(DeviceMaintain deviceMaintain);
+
+    boolean addDeviceMaintain(DeviceMaintain deviceMaintain);
+
+    boolean deleteBatch(String[] ids);
 }

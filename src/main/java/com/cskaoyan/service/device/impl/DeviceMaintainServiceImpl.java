@@ -19,4 +19,22 @@ public class DeviceMaintainServiceImpl implements DeviceMaintainService {
         List<DeviceMaintain> list = deviceMaintainMapper.getList(deviceMaintain);
         return list;
     }
+
+    @Override
+    public boolean addDeviceMaintain(DeviceMaintain deviceMaintain) {
+        int i = deviceMaintainMapper.insertSelective(deviceMaintain);
+
+        return i!=0;
+    }
+
+    @Override
+    public boolean deleteBatch(String[] ids) {
+
+        int i = deviceMaintainMapper.deleteBatch(ids);
+        if(i>=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

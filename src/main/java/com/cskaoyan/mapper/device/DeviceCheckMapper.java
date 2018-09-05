@@ -20,4 +20,6 @@ public interface DeviceCheckMapper {
     int updateByPrimaryKey(DeviceCheck record);
 
     List<DeviceCheck> getList(DeviceCheck deviceCheck);
+
+    int deleteBatch(String[] ids);
 }

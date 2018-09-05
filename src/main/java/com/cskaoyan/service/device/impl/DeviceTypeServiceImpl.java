@@ -28,4 +28,34 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
         List<DeviceType> list = deviceTypeMapper.listType();
         return list;
     }
+
+    @Override
+    public boolean addDeviceType(DeviceType deviceType) {
+
+        int i = deviceTypeMapper.insertSelective(deviceType);
+
+        return i!=0;
+    }
+
+    @Override
+    public boolean deleteBatch(String[] ids) {
+        int i = deviceTypeMapper.deleteBatch(ids);
+        if(i>=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean update(DeviceType deviceType) {
+
+        int i = deviceTypeMapper.updateByPrimaryKeySelective(deviceType);
+
+        if(i>=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
