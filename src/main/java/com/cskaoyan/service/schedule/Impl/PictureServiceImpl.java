@@ -33,13 +33,14 @@ public class PictureServiceImpl implements PictureService {
             newFileName = uuid + originalFilename.substring(originalFilename.lastIndexOf("."));
 
             //新文件路径（在server.xml里映射 /pic/ 路径）
-            String realPath = "E:/upload/temp/pic/";
+            String realPath = "E:\\upload\\temp\\pic\\";
+//            String realPath = "d://upload/temp/img/"
             File newFile = new File(realPath+newFileName);
 
             //写入上传文件
             uploadFile.transferTo(newFile);
 
-            map.put("url","/pic/"+newFileName);;
+            map.put("url","/picture/"+newFileName);;
             map.put("error",0);
 
             return map;
@@ -54,5 +55,18 @@ public class PictureServiceImpl implements PictureService {
 
 
 
+    }
+
+    @Override
+    public boolean deletePic(String picName) {
+        boolean flag = false;
+        picName = picName.substring(picName.lastIndexOf("/" + 1));
+        String realPath = "E:\\upload\\temp\\pic\\";
+        File picFile = new File(realPath,picName);
+        if(picFile.exists()){
+            picFile.delete();
+            flag = true;
+        }
+        return flag;
     }
 }

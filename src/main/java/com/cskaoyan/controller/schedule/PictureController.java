@@ -5,6 +5,7 @@ import com.cskaoyan.service.schedule.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -29,6 +30,18 @@ public class PictureController {
     public String picUpload(MultipartFile uploadFile){
 
         HashMap resultMap =  pictureService.uploadPic(uploadFile);
+        String jsonString = JSONUtils.toJSONString(resultMap);
+        return jsonString;
+
+    }
+
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String picDelete(@RequestParam String picName){
+        boolean b = pictureService.deletePic(picName);
+        HashMap resultMap = new HashMap();
+        resultMap.put("data","success");
         String jsonString = JSONUtils.toJSONString(resultMap);
         return jsonString;
 

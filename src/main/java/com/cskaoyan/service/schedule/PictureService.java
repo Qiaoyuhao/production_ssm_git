@@ -14,4 +14,7 @@ import java.util.HashMap;
 public interface PictureService {
 
     HashMap uploadPic(MultipartFile uploadFile);
+
+    boolean deletePic(String picName);
+
 }
