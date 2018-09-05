@@ -148,6 +148,15 @@
     </select>
 
 
+    <select id="getData" resultMap="BaseResultMap">
+        SELECT
+			device_id,
+			device_name
+		FROM
+			device
+    </select>
+
+
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from device
     where device_id = #{deviceId,jdbcType=VARCHAR}

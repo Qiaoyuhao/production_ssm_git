@@ -75,4 +75,10 @@ public class DeviceServiceImpl implements DeviceService{
 
         return list;
     }
+
+    @Override
+    public List<Device> find() {
+        List<Device> deviceList = deviceMapper.getData();
+        return deviceList;
+    }
 }

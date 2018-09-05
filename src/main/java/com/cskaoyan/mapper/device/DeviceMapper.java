@@ -29,4 +29,6 @@ public interface DeviceMapper {
     List<Device> searchDeviceByDeviceName(String searchValue);
 
     List<Device> searchDeviceByDeviceTypeName(String searchValue);
+
+    List<Device> getData();
 }

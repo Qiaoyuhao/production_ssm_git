@@ -24,6 +24,12 @@ public class DeviceListController {
         return list;
     }
 
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Device> getData(){
+        return deviceService.find();
+    }
+
     @ResponseBody
     @RequestMapping("/add_judge")
     public String addJudge(){
@@ -39,7 +45,6 @@ public class DeviceListController {
     @RequestMapping("/insert")
     @ResponseBody
     public HashMap<String,Object> insert(Device device){
-        System.out.println("device = " + device);
 
         boolean isAdd = deviceService.addDevice(device);
 

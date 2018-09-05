@@ -21,4 +21,7 @@ public interface DeviceService {
     List<Device> searchDeviceByDeviceName(String searchValue);
 
     List<Device> searchDeviceByDeviceTypeName(String searchValue);
+
+    List<Device> find();
+
 }
