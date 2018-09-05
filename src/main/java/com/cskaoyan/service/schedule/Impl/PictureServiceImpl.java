@@ -60,7 +60,7 @@ public class PictureServiceImpl implements PictureService {
     @Override
     public boolean deletePic(String picName) {
         boolean flag = false;
-        picName = picName.substring(picName.lastIndexOf("/" + 1));
+        picName = picName.substring(picName.lastIndexOf("/" )+ 1);
         String realPath = "E:\\upload\\temp\\pic\\";
         File picFile = new File(realPath,picName);
         if(picFile.exists()){

@@ -40,6 +40,7 @@ public class PictureController {
     @ResponseBody
     public String picDelete(@RequestParam String picName){
         boolean b = pictureService.deletePic(picName);
+        System.out.println("b ="+b);
         HashMap resultMap = new HashMap();
         resultMap.put("data","success");
         String jsonString = JSONUtils.toJSONString(resultMap);
