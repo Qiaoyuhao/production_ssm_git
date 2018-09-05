@@ -1,17 +1,12 @@
-package com.cskaoyan.controller.scheduleMonitor;
+package com.cskaoyan.controller.schedule;
 
-import com.cskaoyan.domain.scheduleMonitor.Custom;
-import com.cskaoyan.service.scheduleMonitor.CustomService;
+import com.cskaoyan.domain.schedule.Custom;
+import com.cskaoyan.service.schedule.CustomService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -45,9 +40,15 @@ public class CustomController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public List<Custom> getCustomList(){
+    public HashMap getCustomList(Integer page, Integer rows){
+        PageHelper.startPage(page,rows);
         List<Custom> customList = customService.findCustom();
-        return customList;
+        HashMap map = new HashMap();
+        //pageInfo对象，并把分页参数放入map返回
+        PageInfo pageInfo = new PageInfo(customList);
+        map.put("total",pageInfo.getTotal());
+        map.put("rows",pageInfo.getList());
+        return map;
     }
 
     /**
@@ -58,16 +59,26 @@ public class CustomController {
      */
     @RequestMapping(value = {"/search_custom_by_customName","/search_custom_by_customId"})
     @ResponseBody
-    public List<Custom> getCustomListByConditon(@RequestParam String searchValue, HttpServletRequest request){
+    public HashMap getCustomListByConditon(@RequestParam String searchValue, HttpServletRequest request,Integer page, Integer rows){
+        //获取当前请求的uri
         String requestURI = request.getRequestURI();
+        PageHelper.startPage(page,rows);
         HashMap map = new HashMap();
+
+        //判断请求来自哪个uri，分支处理
         if(requestURI.contains("customName")){
             map.put("customName",searchValue);
         }else if(requestURI.contains("customId")){
             map.put("customId",searchValue);
         }
+        HashMap retrunMap = new HashMap();
         List<Custom> customList = customService.findCustomByCondition(map);
-        return customList;
+
+        //pageInfo对象，并把分页参数放入map返回
+        PageInfo pageInfo = new PageInfo(customList);
+        retrunMap.put("total",pageInfo.getTotal());
+        retrunMap.put("rows",pageInfo.getList());
+        return retrunMap;
     }
 
     /**
@@ -78,12 +89,12 @@ public class CustomController {
      * @return: map 返回map对象
      */
     @RequestMapping("/add_judge")
-    public String judgeBeforeAdd(){
+    public String judgeBeforeAddCustom(){
         return "custom_list" ;
     }
 
     @RequestMapping("/add")
-    public String afterJudge(){
+    public String addCustomAfterJudge(){
         return "custom_add" ;
     }
 
@@ -111,12 +122,12 @@ public class CustomController {
      * @return: map 返回map对象
      */
     @RequestMapping("/edit_judge")
-    public String judgeBeforeEdit(){
+    public String judgeCustomBeforeEdit(){
         return "custom_list" ;
     }
 
     @RequestMapping("/edit")
-    public String editAfterJudge(){
+    public String editCustomAfterJudge(){
         return "custom_edit" ;
     }
 
@@ -162,7 +173,7 @@ public class CustomController {
      */
 
     @RequestMapping("/delete_judge")
-    public String judgeBeforeDelete(){
+    public String judgeCustomBeforeDelete(){
         return "custom_list" ;
     }
 
@@ -188,27 +199,18 @@ public class CustomController {
         return map;
     }
 
+    @RequestMapping("/get_data")
+    @ResponseBody
+    public List<Custom> getCustomData(){
+        List<Custom> custom = customService.findCustom();
+        return custom;
+    }
 
-
-
-
-
-
-//    @RequestMapping("/list")
-//    @ResponseBody
-//    public HashMap getCustomList(Integer page, Integer rows){
-//        List<Custom> customList = customService.findCustom();
-//        Integer pn = customList.size()/rows +1;
-//        HashMap map = new HashMap();
-//        PageHelper.startPage(pn,rows);
-//        PageInfo pageInfo = new PageInfo<>(customList,rows);
-//        System.out.println("pageInfo = "+ pageInfo);
-//        map.put("customList",customList);
-//        map.put("pageInfo",pageInfo);
-//        System.out.println(map);
-//        return map;
-//    }
-
-
-
+    @RequestMapping("/get/{customId}")
+    @ResponseBody
+    public Custom getCustomForOthers(@PathVariable String customId){
+        //获取并返回product对象
+        Custom custom = customService.findCustomById(customId);
+        return custom;
+    }
 }

@@ -1,4 +1,4 @@
-package com.cskaoyan.domain.scheduleMonitor;
+package com.cskaoyan.domain.schedule;
 
 public class Custom {
     /**

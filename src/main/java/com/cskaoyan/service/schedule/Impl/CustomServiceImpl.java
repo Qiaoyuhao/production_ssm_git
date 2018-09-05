@@ -1,11 +1,10 @@
-package com.cskaoyan.service.scheduleMonitor.Impl;
+package com.cskaoyan.service.schedule.Impl;
 
-import com.cskaoyan.domain.scheduleMonitor.Custom;
-import com.cskaoyan.mapper.scheduleMonitor.CustomMapper;
-import com.cskaoyan.service.scheduleMonitor.CustomService;
+import com.cskaoyan.domain.schedule.Custom;
+import com.cskaoyan.mapper.schedule.CustomMapper;
+import com.cskaoyan.service.schedule.CustomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
@@ -117,6 +116,11 @@ public class CustomServiceImpl implements CustomService {
 //            int a = 1 / 0;
         }
         return count==ids.length;
+    }
+
+    @Override
+    public Custom findCustomById(String customId) {
+        return customMapper.selectByPrimaryKey(customId);
     }
 
 

@@ -1,8 +1,6 @@
-package com.cskaoyan.service.scheduleMonitor;
+package com.cskaoyan.service.schedule;
 
-import com.cskaoyan.domain.scheduleMonitor.Custom;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
+import com.cskaoyan.domain.schedule.Custom;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,4 +26,6 @@ public interface CustomService {
     List<Custom> findCustomByCondition(HashMap map);
 
     boolean deleteCustoms(String[] ids) throws Exception;
+
+    Custom findCustomById(String customId);
 }

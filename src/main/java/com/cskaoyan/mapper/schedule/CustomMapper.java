@@ -1,6 +1,6 @@
-package com.cskaoyan.mapper.scheduleMonitor;
+package com.cskaoyan.mapper.schedule;
 
-import com.cskaoyan.domain.scheduleMonitor.Custom;
+import com.cskaoyan.domain.schedule.Custom;
 
 import java.util.HashMap;
 import java.util.List;
