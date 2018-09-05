@@ -21,4 +21,7 @@ public interface DeviceTypeMapper {
     int updateByPrimaryKey(DeviceType record);
 
     List<DeviceType> getList(DeviceType deviceType);
+
+    List<DeviceType> listType();
+
 }

@@ -21,4 +21,11 @@ public class DeviceTypeServiceImpl implements DeviceTypeService {
 
         return list;
     }
+
+    @Override
+    public List<DeviceType> find() {
+
+        List<DeviceType> list = deviceTypeMapper.listType();
+        return list;
+    }
 }

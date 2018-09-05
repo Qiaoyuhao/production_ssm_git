@@ -8,4 +8,6 @@ import java.util.List;
 @Service
 public interface DeviceTypeService {
     List<DeviceType> getList(DeviceType deviceType);
+
+    List<DeviceType> find();
 }
