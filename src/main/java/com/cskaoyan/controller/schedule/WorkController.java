@@ -195,9 +195,9 @@ public class WorkController {
 
     @RequestMapping("/get/{workId}")
     @ResponseBody
-    public Work getWorkForOthers(@PathVariable String workId){
+    public WorkVO getWorkForOthers(@PathVariable String workId){
         //获取并返回work对象
-        Work work = workService.findWorkById(workId);
+        WorkVO work = workService.findWorkById(workId);
         return work;
     }
 

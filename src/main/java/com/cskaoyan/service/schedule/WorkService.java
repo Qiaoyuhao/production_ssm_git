@@ -28,6 +28,6 @@ public interface WorkService {
 
     boolean deleteWorks(String[] ids) throws Exception;
 
-    Work findWorkById(String workId);
+    WorkVO findWorkById(String workId);
 
 }

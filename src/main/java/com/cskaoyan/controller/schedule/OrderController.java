@@ -7,10 +7,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -70,14 +67,15 @@ public class OrderController {
         return "order_add" ;
     }
 
-    @RequestMapping("/insert")
+    @RequestMapping(value = "/insert",method=RequestMethod.POST)
     @ResponseBody
     public HashMap insertOrder(COrder cOrder){
         boolean ret = orderService.addOrder(cOrder);
         HashMap map = new HashMap();
         if(ret){
-            String status = "200";
-            map.put("status",status);
+            map.put("status",200);
+            map.put("msg","ok");
+            map.put("data",null);
         }else {
             String msg = "添加失败，请重试.";
             map.put("msg",msg);
@@ -192,9 +190,9 @@ public class OrderController {
 
     @RequestMapping("/get/{orderId}")
     @ResponseBody
-    public COrder getOrderForOthers(@PathVariable String orderId){
+    public COrderVO getOrderForOthers(@PathVariable String orderId){
         //获取并返回order对象
-        COrder cOrder = orderService.findOrderById(orderId);
+        COrderVO cOrder = orderService.findOrderById(orderId);
         return cOrder;
     }
     @RequestMapping("/get_data")

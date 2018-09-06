@@ -77,7 +77,7 @@ public class OrderServiceImpl implements OrderService {
 
 
     @Override
-    public COrder findOrderById(String orderId) {
+    public COrderVO findOrderById(String orderId) {
         return orderMapper.selectByPrimaryKey(orderId);
     }
 }

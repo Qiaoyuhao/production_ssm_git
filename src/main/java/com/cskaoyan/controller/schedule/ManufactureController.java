@@ -193,9 +193,9 @@ public class ManufactureController {
 
     @RequestMapping("/get/{manufactureSn}")
     @ResponseBody
-    public Manufacture getManufactureForOthers(@PathVariable String manufactureSn){
+    public ManufactureVO getManufactureForOthers(@PathVariable String manufactureSn){
         //获取并返回manufacture对象
-        Manufacture manufacture = manufactureService.findManufactureById(manufactureSn);
+        ManufactureVO manufacture = manufactureService.findManufactureById(manufactureSn);
         return manufacture;
     }
 

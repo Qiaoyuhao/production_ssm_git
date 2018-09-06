@@ -77,7 +77,7 @@ public class WorkServiceImpl implements WorkService {
 
 
     @Override
-    public Work findWorkById(String workId) {
+    public WorkVO findWorkById(String workId) {
         return workMapper.selectByPrimaryKey(workId);
     }
 }

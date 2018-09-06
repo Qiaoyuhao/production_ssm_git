@@ -77,7 +77,7 @@ public class ManufactureServiceImpl implements ManufactureService {
 
 
     @Override
-    public Manufacture findManufactureById(String manufactureSn) {
+    public ManufactureVO findManufactureById(String manufactureSn) {
         return manufactureMapper.selectByPrimaryKey(manufactureSn);
     }
 

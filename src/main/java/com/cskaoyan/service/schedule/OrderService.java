@@ -28,5 +28,5 @@ public interface OrderService {
 
     boolean deleteOrders(String[] ids) throws Exception;
 
-    COrder findOrderById(String orderId);
+    COrderVO findOrderById(String orderId);
 }

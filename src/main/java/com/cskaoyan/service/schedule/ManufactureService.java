@@ -28,6 +28,6 @@ public interface ManufactureService {
 
     boolean deleteManufactures(String[] ids) throws Exception;
 
-    Manufacture findManufactureById(String manufactureSn);
+    ManufactureVO findManufactureById(String manufactureSn);
 
 }
