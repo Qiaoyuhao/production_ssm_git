@@ -35,7 +35,7 @@
         <!-- 基本属性 url、user、password -->
         <property name="url" value="jdbc:mysql://localhost:3306/production_ssm?serverTimezone=GMT" />
         <property name="username" value="root" />
-        <property name="password" value="mysql4869" />
+        <property name="password" value="61813748" />
 
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="3" />

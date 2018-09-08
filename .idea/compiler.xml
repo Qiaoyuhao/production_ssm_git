@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="production_ms" />
+        <module name="production_ssm" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="production_ms" target="1.7" />
+      <module name="production_ssm" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

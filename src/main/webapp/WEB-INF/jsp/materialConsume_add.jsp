@@ -37,7 +37,7 @@
 	        <tr>
 	            <td>消耗日期:</td>
 	            <td>
-					<input class="easyui-datetimebox" name="consumeDate"
+					<input class="easyui-datetimebox" name="consumeDatess"
         			data-options="required:true,showSeconds:true" value="date.format('yyyy-MM-dd hh:mm:ss')"
 						   style="width:160px">
 				</td>
