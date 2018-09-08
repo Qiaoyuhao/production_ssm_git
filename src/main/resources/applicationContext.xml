@@ -4,6 +4,7 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
@@ -11,13 +12,15 @@
          http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
          http://www.springframework.org/schema/tx
-        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
 
-    <!-- 注解驱动 -->
-    <mvc:annotation-driven/>
-
+    <!-- 注解驱动 以及validator注解支持-->
+    <mvc:annotation-driven  conversion-service="conversionService" validator="validator"/>
+    <!--validator="validator"-->
     <!--  自动扫描 -->
     <context:component-scan base-package="com.cskaoyan"/>
 
@@ -35,7 +38,7 @@
         <!-- 基本属性 url、user、password -->
         <property name="url" value="jdbc:mysql://localhost:3306/production_ssm?serverTimezone=GMT" />
         <property name="username" value="root" />
-        <property name="password" value="61813748" />
+        <property name="password" value="mysql4869" />
 
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="3" />
@@ -79,15 +82,16 @@
     </bean>
 
     <!--  静态资源映射 -->
-    <mvc:resources mapping="/**" location="/WEB-INF/css,/WEB-INF/js,/WEB-INF/image"/>
+    <mvc:resources mapping="/**" location="/WEB-INF/css,/WEB-INF/js,/WEB-INF/image,/WEB-INF/jsp"/>
 
+     <!--  事务注解驱动 -->
+    <tx:annotation-driven transaction-manager="txmanager"></tx:annotation-driven>
 
-    <!--  事务注解驱动 -->
-    <tx:annotation-driven transaction-manager="transactionManager"/>
-    <!--  事务管理   -->
-    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="myDataSource"/>
+    <!--  事务配置 -->
+    <bean id="txmanager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="myDataSource"></property>
     </bean>
+
 
     <!-- 文件上传管理 -->
     <bean id="multipartResolver"
@@ -111,5 +115,20 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.cskaoyan.mapper"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+
+    <!-- 转换器 -->
+    <bean id="conversionService"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.cskaoyan.utils.MyDateConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!--  参数校验 -->
+    <bean id="validator"  class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"></property>
     </bean>
 </beans>
