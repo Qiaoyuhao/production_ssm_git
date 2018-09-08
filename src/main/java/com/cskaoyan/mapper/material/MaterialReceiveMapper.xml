@@ -26,19 +26,19 @@
     <select id="selectReceiveById" parameterType="string" resultMap="BaseResultMap">
         SELECT  * FROM material_receive WHERE receive_id=#{receiveId};
     </select>
+
     <!--新增收入-->
     <insert id="insertReceive" parameterType="MaterialReceive" >
         INSERT INTO  material_receive
-        (receive_id,amount,
-        receive_date,sender,receiver,note)
-        VALUES (#{receiveId},#{amount},
-        #{receiveDate},#{sender},#{receiver},#{note});
+        (receive_id,material_id,amount,receive_date,sender,receiver,note)
+        VALUES
+        (#{receiveId},#{materialId},#{amount},#{receiveDate},#{sender},#{receiver},#{note});
     </insert>
 
   <!--编辑收入-->
   <update id="editReceive" parameterType="MaterialReceive">
     UPDATE material_receive SET
-    amount=#{amount},receive_date=#{receiveDate},
+    material_id=#{materialId},amount=#{amount},receive_date=#{receiveDate},
     sender=#{sender},receiver=#{receiver},note=#{note}
     WHERE receive_id=#{receiveId};
   </update>

@@ -21,11 +21,9 @@
     <!--增加物料信息-->
     <insert id="insertMaterial" parameterType="material" >
         INSERT INTO material
-        (material_id,material_type,
-        status,remaining,note)
+        (material_id,material_type,status,remaining,note)
         VALUES
-        (#{materialId},#{materialType},
-        #{status},#{remaining},#{note})
+        (#{materialId},#{materialType},#{status},#{remaining},#{note})
     </insert>
 
   <!--编辑物料信息-->

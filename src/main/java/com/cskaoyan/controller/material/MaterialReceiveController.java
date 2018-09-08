@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.jws.WebParam;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -74,7 +75,8 @@ public class MaterialReceiveController {
     //执行新增操作
     @RequestMapping("materialReceive/insert")
     @ResponseBody
-    public HashMap insertReceive(MaterialReceive materialReceive){
+    public HashMap insertReceive(MaterialReceive materialReceive,String materialConsumeParams){
+        materialReceive.setReceiveDate(new Date());
         HashMap hashMap = materialReceiveService.insertReceive(materialReceive);
         return hashMap;
     }

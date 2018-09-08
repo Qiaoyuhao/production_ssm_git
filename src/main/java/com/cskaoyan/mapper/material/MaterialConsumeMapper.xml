@@ -60,11 +60,8 @@
     <!--编辑消耗-->
     <update id="editConsume" parameterType="MaterialConsume">
         UPDATE material_consume SET
-        consume_amount=#{consumeAmount},
-        consume_date=#{consumeDate},
-        sender=#{sender},
-        receiver=#{receiver},
-        note=#{note}
+        consume_amount=#{consumeAmount},consume_date=#{consumeDate},
+        sender=#{sender},receiver=#{receiver},note=#{note}
         WHERE consume_id = #{consumeId}
 
     </update>

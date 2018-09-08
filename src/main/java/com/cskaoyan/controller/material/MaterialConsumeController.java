@@ -37,7 +37,6 @@ public class MaterialConsumeController {
     @RequestMapping("materialConsume/list")
     @ResponseBody
     public HashMap selectAllConsume(Integer page,Integer rows){
-        System.out.println("contr list");
         HashMap hashMap = materialConsumeService.selectAllConsume(page,rows);
         return hashMap;
     }
@@ -71,7 +70,6 @@ public class MaterialConsumeController {
     @RequestMapping("materialConsume/insert")
     @ResponseBody
     public HashMap insertConsume (MaterialConsume materialConsume,String materialConsumeParams){
-        System.out.println("contr insert");
         materialConsume.setConsumeDate(new Date());
         HashMap hashMap = materialConsumeService.insertConsume(materialConsume);
         return hashMap;
@@ -106,6 +104,15 @@ public class MaterialConsumeController {
         return hashMap;
     }
 
+
+    /**
+     * 根据物料消耗编号进行模糊搜索
+     */
+    @RequestMapping("materialConsume/search_materialConsume_by_consumeId")
+    @ResponseBody
+    public HashMap searchMaterialConsumeByConsumeId(String searchValue,Integer page,Integer rows){
+        return materialConsumeService.searchMaterialConsumeByConsumeId(searchValue,page,rows);
+    }
     /**
      * 根据作业编号模糊搜索
      */
